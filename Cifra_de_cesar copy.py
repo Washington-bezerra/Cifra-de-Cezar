@@ -9,6 +9,8 @@ Versão: 1.0.0  - Criação
 Versão: 1.1.0 - Adicionado a criptograia  SHA1
 04/03/2020 - 20:51
 
+Versão: 2.0.0 - Cria e atualiza o json
+05/03/2020 - 18:31
 '''
 from requests import get
 from hashlib import sha1
@@ -27,11 +29,11 @@ api_json = api.json() #API em formato de dicionario
 
 cifrado = api_json['cifrado'].lower() 
 
-def cria_json(api_em_dict):
+def criamod_json(api_em_dict):
     with open("answer.json", "w") as f:
         json.dump(api_em_dict, f)
 
-cria_json(api_json)
+criamod_json(api_json)
 
 for c in cifrado:
     if c in alfabeto:
@@ -47,6 +49,7 @@ api_json['resumo_criptografico'] = (result_sha1.hexdigest())
 resumo = (result_sha1.hexdigest())
 api_json['decifrado'] = descriptografado
 
+criamod_json(api_json)
 
 #atualizando_json(descriptografado, resumo)
 arquivo_json = open("answer.json", 'r')
