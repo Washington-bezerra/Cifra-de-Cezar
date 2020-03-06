@@ -12,17 +12,19 @@ Versão: 1.1.0 - Adicionado a criptograia  SHA1
 Versão: 2.0.0 - Cria e atualiza o json
 05/03/2020 - 18:31
 '''
-from requests import get
+#from requests import get, request
+import requests
 from hashlib import sha1
 import string
 import json
 
+API_URL = "https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=b1a53f0d8478a6cf3664d4a918221650d98cca71"
 alfabeto = list(string.ascii_lowercase)
 
 descriptografado = ""
 
 
-api = get("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=b1a53f0d8478a6cf3664d4a918221650"
+api = requests.get("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=b1a53f0d8478a6cf3664d4a918221650"
                    "d98cca71")
 
 api_json = api.json() #API em formato de dicionario
@@ -52,10 +54,10 @@ api_json['decifrado'] = descriptografado
 criamod_json(api_json)
 
 #atualizando_json(descriptografado, resumo)
-arquivo_json = open("answer.json", 'r')
+'''arquivo_json = open("answer.json", 'r')
 dados_json = json.load(arquivo_json)
-dados_json["decifrado"] = descriptografado
+dados_json["decifrado"] = descriptografado'''
 
-print(f'\n ==> CIFRADO: {cifrado}')
+'''print(f'\n ==> CIFRADO: {cifrado}')
 print(f'\n ==> DESCIFRADO: {descriptografado}')
-print(f'\n ==> SHA1: {(result_sha1.hexdigest())} \n')
+print(f'\n ==> SHA1: {(result_sha1.hexdigest())} \n')'''
